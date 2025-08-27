@@ -81,6 +81,7 @@ const AuthProvider = ({ children }) => {
   const connectSocket = (userData) => {
     if (!userData || socket?.connected) return;
     const newSocket = io(backendUrl, {
+      transports: ["websocket", "polling"],
       query: {
         userId: userData._id,
       },
